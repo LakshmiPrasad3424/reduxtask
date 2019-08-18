@@ -140,4 +140,5 @@
 .Popup .PopupFooter .Add {
     background: #0e3cb9;
     color: #fff;
+    display: none;
 }

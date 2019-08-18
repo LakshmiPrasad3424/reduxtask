@@ -8,6 +8,12 @@ class Popup extends Component {
 
     render() {
         const { onToggleModal, addUser, name, id, Description, nameChange, idChange, descChange } = this.props;
+        if ((name !== '' && name !== null) && (id !== '' && id !== null) && (Description !== ' ' && Description !== null)) {
+            var style = {
+                display: 'inline-block'
+            }
+        }
+
         return (
             <div className="Popup">
                 <div className="PopupInner">
@@ -25,7 +31,7 @@ class Popup extends Component {
                     }}>
                         <div className="Details">
                             <label>Name</label>
-                            <input type="text" required value={name ? name : ''} onChange={nameChange} />
+                            <input type="text" minLength="4" required value={name ? name : ''} onChange={nameChange} />
                         </div>
                         <div className="Details">
                             <label>id</label>
@@ -33,14 +39,14 @@ class Popup extends Component {
                         </div>
                         <div className="Details">
                             <label>Description</label>
-                            <textarea required value={Description ? Description : ''} onChange={descChange}></textarea>
+                            <textarea minLength="40" value={Description ? Description : ''} onChange={descChange}></textarea>
                         </div>
 
                         <div className="PopupFooter">
                             <button className="Cancel" onClick={() => onToggleModal(false)}>
                                 Cancel
                         </button>
-                            <button className="Add" type="Submit">Add User</button>
+                            <button className="Add" type="Submit" style={style}>Add User</button>
                         </div>
                     </form>
                 </div>

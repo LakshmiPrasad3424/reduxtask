@@ -34,9 +34,10 @@ const popupReducer = (state = initState, action) => {
             }
         }
         case actionType.ADD_USER: {
+
             return {
                 ...state,
-                show: false 
+                show: false
             }
         }
         default:
