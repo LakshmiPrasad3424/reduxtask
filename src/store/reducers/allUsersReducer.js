@@ -28,6 +28,8 @@ const initState = {
             "Description": "Gluten-free cray cardigan vegan. Lumbersexual pork belly blog, fanny pack put a bird on it selvage",
         }
     ],
+    checkedUsers: [],
+    allUsersChecked: false,
 }
 
 const allUsersReducer = (state = initState, action) => {
@@ -35,14 +37,37 @@ const allUsersReducer = (state = initState, action) => {
         case actionType.ADD_USER: {
             return {
                 ...state,
-                users: [...state.users, action.user]
+                users: [...state.users, action.user],
             }
         }
         case actionType.DELETE_USER: {
+            let newUsers = [...state.users]
+            state.checkedUsers.forEach(checkedUser => {
+                newUsers = newUsers.filter(user => user !== checkedUser)
+            })
             return {
                 ...state,
-                users: state,
-                users: state.users.filter(user => user !== action.user)
+                users: newUsers,
+                allUsersChecked: false
+            }
+        }
+        case actionType.CHECK_ALL_USERS: {
+            return {
+                ...state,
+                checkedUsers: !state.allUsersChecked ? [...state.users] : [],
+                allUsersChecked: !state.allUsersChecked
+            }
+        }
+        case actionType.CHECK_USER: {
+            return {
+                ...state,
+                checkedUsers: [...state.checkedUsers, action.user]
+            }
+        }
+        case actionType.UNCHECK_USER: {
+            return {
+                ...state,
+                checkedUsers: state.checkedUsers.filter(user => user !== action.user)
             }
         }
         default:

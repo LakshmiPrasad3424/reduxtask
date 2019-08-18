@@ -24,13 +24,19 @@ const popupReducer = (state = initState, action) => {
         case actionType.ID_CHANGE: {
             return {
                 ...state,
-                 idValue: action.number,
+                idValue: action.number,
             }
         }
         case actionType.DESC_CHANGE: {
             return {
                 ...state,
                 descriptionValue: action.desc
+            }
+        }
+        case actionType.ADD_USER: {
+            return {
+                ...state,
+                show: false 
             }
         }
         default:

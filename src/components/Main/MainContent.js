@@ -5,7 +5,9 @@ import './Main.css';
 class MainContent extends Component {
     render() {
         const { user } = this.props;
+
         if (!user.user) {
+           
             return (
                 <div className="DefaultMsg">Please Select the user to see Details.</div>
             )
@@ -19,7 +21,7 @@ class MainContent extends Component {
                     <div className="MainContentInner">
                         <div className="MainDetails">
                             <label>Name</label>
-                            <div>{user.user.name}</div>
+                            <div>{user.user.name ? user.user.name : ''}</div>
                         </div>
                         <div className="MainDetails">
                             <label>id</label>

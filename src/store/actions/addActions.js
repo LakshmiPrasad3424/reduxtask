@@ -5,6 +5,21 @@ export const onToggleModal = (show) => ({
     show
 });
 
+
+export const checkAllUsers = () => ({
+    type: actionType.CHECK_ALL_USERS,
+})
+
+export const checkUser = (user) => ({
+    type: actionType.CHECK_USER,
+    user
+})
+
+export const uncheckUser = (user) => ({
+    type: actionType.UNCHECK_USER,
+    user
+})
+
 export const selectUser = (user) => ({
     type: actionType.SELECT_USER,
     user

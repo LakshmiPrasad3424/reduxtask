@@ -7,6 +7,14 @@ const activeUserReducer = (state = {}, action) => {
                 ...state,
                 user: action.user
             }
+
+        }
+        case actionType.DELETE_USER: {
+
+            return {
+                ...state,
+                user: action.user,
+            }
         }
         default:
             return state;

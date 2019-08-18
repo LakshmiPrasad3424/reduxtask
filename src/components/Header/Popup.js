@@ -19,25 +19,28 @@ class Popup extends Component {
                             &times;
                         </div>
                     </div>
-                    <form onSubmit={() => addUser(name,id,Description)}>
+                    <form onSubmit={e => {
+                        e.preventDefault();
+                        addUser({ name, id, Description });
+                    }}>
                         <div className="Details">
                             <label>Name</label>
-                            <input type="text" required id="name" value={name ? name : ''} onChange={nameChange} />
+                            <input type="text" required value={name ? name : ''} onChange={nameChange} />
                         </div>
                         <div className="Details">
                             <label>id</label>
-                            <input type="text" required id="id" value={id ? id : ''} onChange={idChange} />
+                            <input type="text" required value={id ? id : ''} onChange={idChange} />
                         </div>
                         <div className="Details">
                             <label>Description</label>
-                            <textarea required id="Description" value={Description ? Description : ''} onChange={descChange}></textarea>
+                            <textarea required value={Description ? Description : ''} onChange={descChange}></textarea>
                         </div>
 
                         <div className="PopupFooter">
                             <button className="Cancel" onClick={() => onToggleModal(false)}>
                                 Cancel
                         </button>
-                            <button className="Add" type="Submit" >Add User</button>
+                            <button className="Add" type="Submit">Add User</button>
                         </div>
                     </form>
                 </div>
